@@ -1,6 +1,9 @@
 package oo.lista4.principal;
 
 import oo.lista4.engine.Agenda;
+import oo.lista4.modelos.Aluno;
+import oo.lista4.modelos.Contato;
+import oo.lista4.modelos.Pessoa;
 
 public class Principal {
 	public static void main(String[] args) {

@@ -22,7 +22,7 @@ final class Exercicio2 {
 		boolean funciona = true;
 		
 		do {
-			opcao = Exercicio2.imprimeOpcoes();
+			opcao = imprimeOpcoes();
 			switch(opcao) {
 			case 1:
 				Exercicio2.addPar();
@@ -41,13 +41,13 @@ final class Exercicio2 {
 		System.out.println("Programa finalizado!");
 	}
 	
-	static int imprimeOpcoes() {
+	private static int imprimeOpcoes() {
 		int opcao;
 		System.out.println("\n1 - Adicionar par.\n2 - Total vendido.\n3 - Fazer outra operacao.\n4 - Sair.\n");
 		opcao = scan.nextInt();
 		return opcao;
 	}
-	static void addPar() {
+	private static void addPar() {
 		String codigo;
 		int quantidade;
 		System.out.println("Digite o código do par: ");
@@ -61,10 +61,10 @@ final class Exercicio2 {
 		}
 		
 	}
-	static void imprimirTotal() {
+	private static void imprimirTotal() {
 		System.out.printf("\nO valor total da venda foi de = %.2f",total);
 	}
-	static void limparTotal() {
+	private static void limparTotal() {
 		total = 0;
 		System.out.println("\nPronto para fazer outra operação!\n");
 	}

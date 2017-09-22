@@ -26,7 +26,7 @@ public class Agenda {
 				"3 - Remover contato.\n4 - Listar todos.\n5 - Sair.\n");
 		System.out.println("Digite a opcao desejada: ");
 		int opcao = scan.nextInt();
-		if(opcao >= 1 && opcao <= 4) {
+		if(opcao >= 1 && opcao <= 5) {
 			return opcao;
 		}else {
 			System.out.println("Digite uma opcao valida: ");
@@ -182,20 +182,16 @@ public class Agenda {
 	}
 	
 	public void listarTodos() {
-		System.out.println("Lista de contatos de alunos: ");
+		Contato contato;
+		System.out.println("\nLista de contatos de alunos: ");
 		for(Aluno aluno: alunos) {
-			System.out.println("Nome: "+aluno.getNome());
-			System.out.println("Telefone: "+aluno.getTelefone());
-			System.out.println("Email: "+aluno.getEmail());
-			System.out.println("Nº Matricula: "+aluno.getNumeroMatricula()+"\n");
+			contato = aluno;
+			System.out.println(contato.dadosFormatados());
 		}
-		System.out.println("Lista de contatos de professores: ");
+		System.out.println("\nLista de contatos de professores: ");
 		for(Professor professor: professores) {
-			System.out.println("Nome: "+professor.getNome());
-			System.out.println("Telefone: "+professor.getTelefone());
-			System.out.println("Email: "+professor.getEmail());
-			System.out.println("Registro: "+professor.getNumeroRegistro());
-			System.out.println("Quantidade Hora: "+professor.getQuantidadeHoraAula());
+			contato = professor;
+			System.out.println(contato.dadosFormatados());
 			
 		}
 	}

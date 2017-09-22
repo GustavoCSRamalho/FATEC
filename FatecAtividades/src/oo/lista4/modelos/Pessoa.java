@@ -4,7 +4,8 @@ public abstract class Pessoa implements Contato{
 	private String nome;
 	private String telefone;
 	private String email;
-	@Override
+	
+//	@Override
 	public String dadosFormatados() {
 		// TODO Auto-generated method stub
 		String dadosFormatados;
