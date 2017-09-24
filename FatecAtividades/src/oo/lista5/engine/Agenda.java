@@ -63,27 +63,27 @@ public class Agenda {
 		}
 	}
 	
-	public void lerAgenda() throws IOException, ClassNotFoundException {
-		FileInputStream ler = new FileInputStream("/home/gustavo/Documents/fatec/OrientacaoObjeto/"+
-				"Exercicios/exercicio5/agenda.txt");
-		ObjectInputStream lerObjeto = new ObjectInputStream(ler);
-		List<Pessoa> listaPessoas = (List<Pessoa>)lerObjeto.readObject();
-		Contato contato;
-		boolean profImprime = true, alunoImprime = true;
-		for(Pessoa pessoa: listaPessoas) {
-			if(pessoa instanceof Aluno) {
-				if(alunoImprime)	System.out.println("\nLista de contatos de alunos: ");	alunoImprime = false;
-				
-			}else {
-				if(profImprime)	System.out.println("\nLista de contatos de professores: ");	profImprime = false;
-			}
-			contato = pessoa;
-			System.out.println(contato.dadosFormatados());
-		}
-		lerObjeto.close();
-		ler.close();
-		
-	}
+//	public void lerAgenda() throws IOException, ClassNotFoundException {
+//		FileInputStream ler = new FileInputStream("/home/gustavo/Documents/fatec/OrientacaoObjeto/"+
+//				"Exercicios/exercicio5/agenda.txt");
+//		ObjectInputStream lerObjeto = new ObjectInputStream(ler);
+//		List<Pessoa> listaPessoas = (List<Pessoa>)lerObjeto.readObject();
+//		Contato contato;
+//		boolean profImprime = true, alunoImprime = true;
+//		for(Pessoa pessoa: listaPessoas) {
+//			if(pessoa instanceof Aluno) {
+//				if(alunoImprime)	System.out.println("\nLista de contatos de alunos: ");	alunoImprime = false;
+//				
+//			}else {
+//				if(profImprime)	System.out.println("\nLista de contatos de professores: ");	profImprime = false;
+//			}
+//			contato = pessoa;
+//			System.out.println(contato.dadosFormatados());
+//		}
+//		lerObjeto.close();
+//		ler.close();
+//		
+//	}
 	public void salvarAgenda() throws IOException {
 		FileOutputStream escrever = new FileOutputStream("/home/gustavo/Documents/fatec/OrientacaoObjeto/"+
 				"Exercicios/exercicio5/agenda.txt");
@@ -101,7 +101,7 @@ public class Agenda {
 	public int listarOpcoes() {
 		System.out.println("\n1 - Adicionar contato.\n2 - Editar contato.\n"+
 				"3 - Remover contato.\n4 - Listar todos.\n5 - Salvar agenda.\n"
-				+ "6 - Listar agenda.\n7 - Sair.\n");
+				+ "6 - Recuperar agenda.\n7 - Sair.\n");
 		System.out.println("Digite a opcao desejada: ");
 		int opcao = scan.nextInt();
 		if(opcao >= 1 && opcao <= 7) {

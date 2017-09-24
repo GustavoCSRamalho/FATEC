@@ -12,7 +12,6 @@ final class Principal {
 		boolean funciona = true;
 		Agenda agenda = new Agenda();
 		agenda.criaArquivo();
-		agenda.recuperaDados();
 		int opcao = 0;
 		do {
 			opcao = agenda.listarOpcoes();
@@ -33,7 +32,7 @@ final class Principal {
 				agenda.salvarAgenda();
 				break;
 			case 6:
-				agenda.lerAgenda();
+				agenda.recuperaDados();
 				break;
 			case 7:
 				funciona = false;
