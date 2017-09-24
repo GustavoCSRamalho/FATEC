@@ -24,7 +24,7 @@ public class Aplicativo {
 	
 	public int listarOpcoes() {
 		System.out.println("\n1 - Cadastrar produto\n2 - Editar produto\n3 - Remover produto\n"
-				+ "4 - Produtos armazenados\n5 - Salvar produtos.\n6 - Listar produtos.\n7 - Sair\n");
+				+ "4 - Produtos armazenados\n5 - Salvar produtos.\n6 - Listar produtos.\n7 - Sair da conta\n");
 		System.out.println("\nDigite uma opcao: \n");
 		int opcao = Dados.scan.nextInt();
 		if(opcao >= 1 && opcao <= 7) {
