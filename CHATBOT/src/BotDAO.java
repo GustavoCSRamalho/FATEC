@@ -23,23 +23,31 @@ public class BotDAO {
 	}
 	
 	void executa() {
-		String mensagem = "";
+		String mensagemEntrada = "";
+		String mensagemErro = "";
 		if (scanner.hasNext()) {
 		    System.out.println("stdout");
-		    mensagem = scanner.useDelimiter("$$").next();
+		    mensagemEntrada = scanner.useDelimiter("$$").next();
 //		    System.out.println(scanner.useDelimiter("$$").next());
 		    
-		    System.out.println(mensagem);
+		    System.out.println(mensagemEntrada);
 		}
 
 		scanner = new Scanner(p.getErrorStream()).useDelimiter("$$");
 		if (scanner.hasNext()) {
 		    System.out.println("stdout");
-		    System.out.println(scanner.useDelimiter("$$").next());
+		    mensagemErro = scanner.useDelimiter("$$").next();
+		    System.out.println(mensagemErro);
 		}
 		
-		System.out.println("Mensagem "+mensagem);
-		this.mensagem = mensagem;
+		System.out.println("Mensagem "+mensagemEntrada);
+		System.out.println("Erro "+mensagemErro);
+		if(!mensagemEntrada.isEmpty()) {
+			this.mensagem = mensagemEntrada;
+		}else {
+			this.mensagem = mensagemErro;
+		}
+		
 	}
 	
 	String mensagem() {

@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import oo.lista5.modelos.Pessoa;
@@ -18,13 +20,13 @@ public class Aplicativo {
 	private Dados dados;
 	
 	public Aplicativo() {
-//		this.listaProdutos = new ArrayList<Produto>();
+		//this.listaProdutos = new ArrayList<Produto>();
 		this.dados = new Dados();
 	}
 	
 	public int listarOpcoes() {
 		System.out.println("\n1 - Cadastrar produto\n2 - Editar produto\n3 - Remover produto\n"
-				+ "4 - Produtos armazenados\n5 - Salvar produtos.\n6 - Listar produtos.\n7 - Sair da conta\n");
+				+ "4 - Listar produtos armazenados\n5 - Salvar produtos.\n6 - Recuperar produtos.\n7 - Sair da Apliacação\n");
 		System.out.println("\nDigite uma opcao: \n");
 		int opcao = Dados.scan.nextInt();
 		if(opcao >= 1 && opcao <= 7) {
@@ -84,6 +86,7 @@ public class Aplicativo {
 	
 	public void adicionaProduto() {
 		listaProdutos.add(dados.adicionaProduto());
+		ordenaPorNome(listaProdutos);
 	}
 	
 	public void deletaProduto() {
@@ -145,4 +148,15 @@ public class Aplicativo {
 		}
 	}
 	
+	
+
+	 private static void ordenaPorNome(List<Produto> listaProdutos) {  
+	        Collections.sort(listaProdutos, new Comparator<Produto>() {  
+	            @Override  
+	            public int compare(Produto p1, Produto p2) {  
+	                return p1.getNome().compareTo(p2.getNome());  
+	            }  
+
+	     });  
+	    }
 }

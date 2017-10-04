@@ -1,4 +1,4 @@
-package oo.paint.paint;
+package oo.paint.teste;
 
 
 
@@ -19,6 +19,7 @@ public class Rabisco extends JComponent implements
 		MouseListener, MouseMotionListener{
 	private ArrayList<Point> pontos;
 	private ArrayList<Point> pontosAtualizados;
+	private ArrayList<Integer> pontosTipos;
 	private int tamanho = 8;
 	private int metade = tamanho / 2;
 	private Color cor;
@@ -27,11 +28,13 @@ public class Rabisco extends JComponent implements
 	private static Graphics2D g2d;
 
 	public Rabisco(Color cor){
+		
 		this.cor = cor;
 		this.usaBorracha = false;
 		trava = false;
 		pontosAtualizados = new ArrayList<Point>();
 		pontos = new ArrayList<Point>(1024);
+		pontosTipos = new ArrayList<Integer>();
 		addMouseListener(this);
 		addMouseMotionListener(this);
 	}
@@ -40,24 +43,28 @@ public class Rabisco extends JComponent implements
 		g2d = (Graphics2D)g;
 		g2d.setColor(Color.WHITE);
 		g2d.fillRect(0, 0, getWidth(), getHeight());
-		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-		g2d.setColor(cor.BLACK);
-		for(Point ponto : pontos){	
-			g2d.fillOval(ponto.x - metade, ponto.y - metade, tamanho*2, tamanho*2);
-		}	
+		for(int  i = 0; i < pontos.size(); i++) {
+			if(pontos.get(i) != null ) {
+				if(pontosTipos.get(i).intValue() == 1) {
+					g2d.setColor(cor);
+					g2d.fillOval(pontos.get(i).x - metade, pontos.get(i).y - metade, tamanho*2, tamanho*2);
+				}else {
+					g2d.setColor(Color.WHITE);
+					g2d.fillOval(pontos.get(i).x - metade, pontos.get(i).y - metade, tamanho*2, tamanho*2);
+				}
+			}
+		}
+			
 	}
 	@Override
 	public void mouseDragged(MouseEvent e) {
 		Point ponto = e.getPoint();
 		pontos.add(ponto);
-		pontosAtualizados.add(ponto);
-		trava = true;
 		if(usaBorracha) {
-			removeItem(e.getPoint());
-			g2d.setColor(cor.WHITE);
-			
-			g2d.fillOval(ponto.x - metade, ponto.y - metade, tamanho*2, tamanho*2);
-			
+			pontosTipos.add(2);
+		}else {
+			pontosTipos.add(1);
+			trava = true;
 		}
 		repaint();
 	}
@@ -75,13 +82,10 @@ public class Rabisco extends JComponent implements
 		case MouseEvent.BUTTON1: 
 			Point ponto = e.getPoint();
 			pontos.add(ponto);
-			pontosAtualizados.add(ponto);
-			if(usaBorracha && !trava) {
-				System.out.println("apaga 1");
-				removeItem(e.getPoint());
-				g2d.setColor(cor.WHITE);
-				
-				g2d.clearRect(ponto.x - metade, ponto.y - metade, tamanho*2, tamanho*2);
+			if(usaBorracha ) {//&& !trava
+				pontosTipos.add(2);
+			}else {
+				pontosTipos.add(1);
 			}
 			repaint(); 
 			break;
