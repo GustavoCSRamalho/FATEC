@@ -24,14 +24,12 @@ public class Rabisco extends JComponent implements
 	private int metade = tamanho / 2;
 	private Color cor;
 	private boolean usaBorracha;
-	private boolean trava;
 	private static Graphics2D g2d;
 
 	public Rabisco(Color cor){
 		
 		this.cor = cor;
 		this.usaBorracha = false;
-		trava = false;
 		pontosAtualizados = new ArrayList<Point>();
 		pontos = new ArrayList<Point>(1024);
 		pontosTipos = new ArrayList<Integer>();
@@ -64,7 +62,6 @@ public class Rabisco extends JComponent implements
 			pontosTipos.add(2);
 		}else {
 			pontosTipos.add(1);
-			trava = true;
 		}
 		repaint();
 	}
@@ -82,7 +79,7 @@ public class Rabisco extends JComponent implements
 		case MouseEvent.BUTTON1: 
 			Point ponto = e.getPoint();
 			pontos.add(ponto);
-			if(usaBorracha ) {//&& !trava
+			if(usaBorracha ) {
 				pontosTipos.add(2);
 			}else {
 				pontosTipos.add(1);
@@ -94,7 +91,6 @@ public class Rabisco extends JComponent implements
 				usaBorracha = true;
 			}else {
 				usaBorracha = false;
-				trava = false;
 			}
 		}
 		repaint();

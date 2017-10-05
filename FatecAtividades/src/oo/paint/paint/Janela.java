@@ -11,6 +11,9 @@ import javax.swing.JFrame;
 @SuppressWarnings("serial")
 public class Janela extends JFrame{
 	public Janela(){
+		//Para ativiar o rabisco, clica com o botão direito
+		//Então o botão esquerdo ao invez de pintar ele apaga
+		//Aperte novamente para o botão esquerdo voltar a pintar
 		Rabisco rab1 = new Rabisco(Color.RED);//(Color.RED);
 		Rabisco rab2 = new Rabisco(Color.BLUE);
 		rab1.setBorder(BorderFactory.createLineBorder(Color.RED));
